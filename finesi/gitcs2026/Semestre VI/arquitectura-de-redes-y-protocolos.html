@@ -16,128 +16,154 @@
     --gold2: #e8c97a;
     --text: #e8e8e8;
     --muted: #7a7f8e;
-    --accent: #2a3045;
   }
+  html, body { height: 100%; }
   body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--text);
-    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    flex-direction: column;
   }
-  .topbar-mini {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+  .topbar {
     background: var(--bg2);
     border-bottom: 1px solid var(--border);
-    padding: 12px 32px;
+    padding: 12px 24px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    flex-wrap: wrap;
   }
-  .topbar-mini .logo {
-    width: 30px; height: 30px;
+  .topbar .logo {
+    width: 32px; height: 32px;
     background: var(--gold);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     font-weight: 700; font-size: 12px; color: #0d0f14;
+    flex-shrink: 0;
   }
-  .topbar-mini .uni { font-size: 12px; color: var(--muted); }
-  .topbar-mini .uni strong { color: var(--text); font-weight: 500; }
+  .topbar .uni { font-size: 12px; color: var(--muted); }
+  .topbar .uni strong { color: var(--text); font-weight: 500; }
+  .topbar .sep { color: var(--border); }
 
-  .card {
-    max-width: 420px;
-    width: 100%;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px 28px;
-    text-align: center;
+  .course-bar {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
   }
-  .pdf-icon {
-    width: 52px; height: 52px;
-    margin: 0 auto 18px;
+  .course-bar .icon {
+    width: 34px; height: 34px;
     background: rgba(201,168,76,0.1);
     border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 12px;
+    border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
+    font-size: 15px;
+    flex-shrink: 0;
   }
-  .eyebrow {
-    font-size: 11px;
+  .course-info { flex: 1; min-width: 180px; }
+  .course-eyebrow {
+    font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 10px;
     font-weight: 500;
+    margin-bottom: 2px;
   }
-  h1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .meta {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-  .meta::before {
-    content: '';
-    width: 5px; height: 5px;
-    background: var(--gold);
-    border-radius: 50%;
-    opacity: 0.6;
-  }
+  .course-title { font-size: 15px; font-weight: 600; }
+  .course-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .actions { display: flex; gap: 10px; align-items: center; }
   a.btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(201,168,76,0.1);
     border: 1px solid rgba(201,168,76,0.25);
     color: var(--gold2);
     text-decoration: none;
-    border-radius: 8px;
-    padding: 12px 0;
-    font-size: 13px;
+    border-radius: 7px;
+    padding: 8px 14px;
+    font-size: 12px;
     font-weight: 500;
-    transition: background 0.15s;
+    white-space: nowrap;
   }
   a.btn:hover { background: rgba(201,168,76,0.2); }
-  a.btn svg { width: 15px; height: 15px; }
+  a.btn svg { width: 14px; height: 14px; }
   a.back {
-    display: block;
-    margin-top: 20px;
     color: var(--muted);
     font-size: 12px;
     text-decoration: none;
+    white-space: nowrap;
   }
   a.back:hover { color: var(--gold2); }
+
+  .viewer-wrap {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+  }
+  .viewer-frame {
+    flex: 1;
+    background: #1c1c1c;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .viewer-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  .fallback {
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .fallback a { color: var(--gold2); }
+
+  @media (max-width: 640px) {
+    .viewer-wrap { padding: 10px; }
+    .course-title { font-size: 14px; }
+  }
 </style>
 </head>
 <body>
-  <div class="topbar-mini">
+  <div class="topbar">
     <div class="logo">UNA</div>
-    <div class="uni"><strong>Universidad Nacional del Altiplano</strong> · Facultad de Ingeniería Estadística e Informática</div>
+    <div class="uni"><strong>Universidad Nacional del Altiplano</strong> <span class="sep">·</span> Facultad de Ingeniería Estadística e Informática</div>
   </div>
-  <div class="card">
-    <div class="pdf-icon">🌐</div>
-    <div class="eyebrow">Semestre VI · 2026-I</div>
-    <h1>Arquitectura de Redes y Protocolos</h1>
-    <div class="meta">Redes · Semestre VI</div>
-    <a class="btn" href="arquitectura%20de%20redes%20y%20protocolos.pdf" download>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"/></svg>
-      Descargar sílabo
-    </a>
-    <a class="back" href="../../../index.html">← Volver al portal</a>
+
+  <div class="course-bar">
+    <div class="icon">🌐</div>
+    <div class="course-info">
+      <div class="course-eyebrow">Semestre VI · 2026-I</div>
+      <div class="course-title">Arquitectura de Redes y Protocolos</div>
+      <div class="course-meta">Redes · Semestre VI</div>
+    </div>
+    <div class="actions">
+      <a class="back" href="../../../index.html">← Volver al portal</a>
+      <a class="btn" href="arquitectura%20de%20redes%20y%20protocolos.pdf" download>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"/></svg>
+        Descargar
+      </a>
+    </div>
+  </div>
+
+  <div class="viewer-wrap">
+    <div class="viewer-frame">
+      <iframe src="arquitectura%20de%20redes%20y%20protocolos.pdf" title="Sílabo Arquitectura de Redes y Protocolos">
+        <div class="fallback">
+          Tu navegador no puede mostrar el PDF aquí.
+          <a href="arquitectura%20de%20redes%20y%20protocolos.pdf">Descárgalo directamente</a>.
+        </div>
+      </iframe>
+    </div>
   </div>
 </body>
 </html>
