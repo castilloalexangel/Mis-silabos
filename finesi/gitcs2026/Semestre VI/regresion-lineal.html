@@ -5,71 +5,139 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Regresión Lineal — Sílabo</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --border: rgba(255,255,255,0.07);
+    --gold: #c9a84c;
+    --gold2: #e8c97a;
+    --text: #e8e8e8;
+    --muted: #7a7f8e;
+    --accent: #2a3045;
+  }
   body {
-    margin: 0;
-    font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: #0f1420;
-    color: #e8eaf0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
-    box-sizing: border-box;
+    padding: 24px;
   }
+  .topbar-mini {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar-mini .logo {
+    width: 30px; height: 30px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px; color: #0d0f14;
+  }
+  .topbar-mini .uni { font-size: 12px; color: var(--muted); }
+  .topbar-mini .uni strong { color: var(--text); font-weight: 500; }
+
   .card {
-    max-width: 560px;
+    max-width: 420px;
     width: 100%;
-    background: #171d2b;
-    border: 1px solid #262e42;
-    border-radius: 14px;
-    padding: 36px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
     text-align: center;
   }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: .08em;
+  .pdf-icon {
+    width: 52px; height: 52px;
+    margin: 0 auto 18px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #d9a441;
+    color: var(--gold);
     margin-bottom: 10px;
+    font-weight: 500;
   }
   h1 {
-    font-size: 24px;
-    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
   }
-  p {
-    color: #9aa3b8;
-    font-size: 14px;
-    margin: 0 0 28px;
+  .meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .meta::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.6;
   }
   a.btn {
-    display: inline-block;
-    background: #d9a441;
-    color: #171308;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold2);
     text-decoration: none;
-    padding: 12px 26px;
     border-radius: 8px;
-    font-size: 14px;
+    padding: 12px 0;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s;
   }
+  a.btn:hover { background: rgba(201,168,76,0.2); }
+  a.btn svg { width: 15px; height: 15px; }
   a.back {
     display: block;
-    margin-top: 22px;
-    color: #6d7690;
-    font-size: 13px;
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 12px;
     text-decoration: none;
   }
+  a.back:hover { color: var(--gold2); }
 </style>
 </head>
 <body>
+  <div class="topbar-mini">
+    <div class="logo">UNA</div>
+    <div class="uni"><strong>Universidad Nacional del Altiplano</strong> · Facultad de Ingeniería Estadística e Informática</div>
+  </div>
   <div class="card">
-    <div class="badge">Semestre VI · 2026-I</div>
+    <div class="pdf-icon">📉</div>
+    <div class="eyebrow">Semestre VI · 2026-I</div>
     <h1>Regresión Lineal</h1>
-    <p>Ingeniería Estadística e Informática — UNA Puno</p>
-    <a class="btn" href="regresion lineal.pdf">Descargar sílabo (PDF)</a>
-    <a class="back" href="../index.html">← Volver al portal</a>
+    <div class="meta">Estadística · Semestre VI</div>
+    <a class="btn" href="regresion%20lineal.pdf" download>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"/></svg>
+      Descargar sílabo
+    </a>
+    <a class="back" href="../../../index.html">← Volver al portal</a>
   </div>
 </body>
 </html>
